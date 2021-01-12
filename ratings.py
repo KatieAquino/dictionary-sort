@@ -1,8 +1,5 @@
 """Restaurant rating lister."""
 
-
-"""Restaurant rating lister."""
-
 #create display_restaurant_ratings(file)
     #open file
 
@@ -19,10 +16,12 @@
 
     # Close file
 
-def display_restaurant_ratings(file):
+import sys
+
+def display_restaurant_ratings():
     """ Display and Organize Restaurant Ratings"""
 
-    restaurant_data = open(file)
+    restaurant_data = open(sys.argv[1])
 
     restaurant_ratings = {}
 
@@ -31,10 +30,9 @@ def display_restaurant_ratings(file):
         restaurant_info = line.rstrip().split(":")
         restaurant_ratings[restaurant_info[0]] = restaurant_info[1]
 
-    user_restaurant = input("What restaurant would you like to rate?")
-    user_rating = int(input(f'On a scale on 1 - 5, how would you rate 
-                        {user_restaurant}'))
-                        
+    user_restaurant = input("What restaurant would you like to rate? ")
+    user_rating = int(input(f'On a scale on 1 - 5, how would you rate {user_restaurant} '))
+
     restaurant_ratings[user_restaurant] = user_rating
 
     restaurant_names = sorted(restaurant_ratings)
@@ -44,8 +42,7 @@ def display_restaurant_ratings(file):
 
     restaurant_data.close()
 
-display_restaurant_ratings('scores.txt')
-
+display_restaurant_ratings()
 
 
 
